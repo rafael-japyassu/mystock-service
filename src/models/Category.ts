@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm'
-
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, JoinColumn } from 'typeorm'
+import Product from './Product'
 @Entity('categories')
 class Category {
   @PrimaryGeneratedColumn('uuid')
@@ -7,6 +7,10 @@ class Category {
 
   @Column()
   name: string;
+
+  @OneToMany(() => Product, product => product.category)
+  @JoinColumn({ name: 'id' })
+  products: Product[];
 
   @CreateDateColumn()
   created_at: Date;

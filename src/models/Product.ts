@@ -1,7 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm'
+import Category from './Category'
 
 @Entity('products')
-class Category {
+class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -31,4 +32,4 @@ class Category {
   updated_at: Date;
 }
 
-export default Category
+export default Product
