@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import AppError from '../errors/AppError'
+// import AppError from '../errors/AppError'
 import { verify, Secret } from 'jsonwebtoken'
 
 interface TokenPayload {
@@ -8,11 +8,14 @@ interface TokenPayload {
   sub: string;
 }
 
-function authentication (request: Request, response: Response, next: NextFunction): void {
+function authentication (request: Request, response: Response, next: NextFunction): Response<any> | void {
   const authHeader = request.headers.authorization
 
   if (!authHeader) {
-    throw new AppError('JWT token is missing', 401)
+    return response.status(401).json({
+      status: 'error',
+      message: 'JWT token is missing'
+    })
   }
 
   const [, token] = authHeader.split(' ')
@@ -28,7 +31,10 @@ function authentication (request: Request, response: Response, next: NextFunctio
 
     return next()
   } catch {
-    throw new AppError('Invalid JWT token', 401)
+    return response.status(401).json({
+      status: 'error',
+      message: 'JWT token is missing'
+    })
   }
 }
 
