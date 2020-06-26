@@ -14,5 +14,6 @@
   "cli": {
     "migrationsDir": "./src/database/migrations"
   },
-  "logging": true
+  "logging": "all",
+  "logger": "file"
 }

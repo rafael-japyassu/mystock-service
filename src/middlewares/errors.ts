@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import AppError from '../errors/AppError'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function errors (err: Error, request: Request, response: Response, _: NextFunction): Response {
   if (err instanceof AppError) {
     return response.status(err.statuesCode).json({
