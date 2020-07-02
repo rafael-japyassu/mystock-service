@@ -13,13 +13,36 @@ export const getProducts = async (request: Request, response: Response): Promise
     const productRepository = getRepository(Product)
     const products = await productRepository.find({
       relations: ['category'],
-      take: 10,
-      skip: 0,
       order: {
         name: 'ASC'
       }
     })
+
     return response.json(products)
+  } catch (err) {
+    if (err instanceof AppError) {
+      return response.status(err.statuesCode).json({
+        status: 'error',
+        message: err.message
+      })
+    }
+    return response.status(500).json({
+      status: 'error',
+      message: 'Internal server error'
+    })
+  }
+}
+
+export const getProduct = async (request: Request, response: Response): Promise<Response<any>> => {
+  try {
+    const { id } = request.params
+
+    const productRepository = getRepository(Product)
+    const product = await productRepository.findOne(id, {
+      relations: ['category']
+    })
+
+    return response.json(product)
   } catch (err) {
     if (err instanceof AppError) {
       return response.status(err.statuesCode).json({

@@ -14,7 +14,7 @@ function authentication (request: Request, response: Response, next: NextFunctio
   if (!authHeader) {
     return response.status(401).json({
       status: 'error',
-      message: 'JWT token is missing'
+      message: 'JWT token is missing!'
     })
   }
 
@@ -33,7 +33,7 @@ function authentication (request: Request, response: Response, next: NextFunctio
   } catch {
     return response.status(401).json({
       status: 'error',
-      message: 'JWT token is missing'
+      message: 'JWT token is invalid!'
     })
   }
 }

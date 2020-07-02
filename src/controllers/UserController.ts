@@ -13,13 +13,14 @@ export const getUsers = async (request: Request, response: Response): Promise<Re
 
 export const saveUser = async (request: Request, response: Response): Promise<Response<any>> => {
   try {
-    const { name, email, password } = request.body
+    const { name, email, password, confirmPassword } = request.body
     const createUser = new CreateUserService()
 
     const user = await createUser.execute({
       name,
       email,
-      password
+      password,
+      confirmPassword
     })
 
     delete user.password

@@ -16,6 +16,8 @@ class CreateProductService {
 
     await productRepository.save(product)
 
+    // console.log(productRepository)
+
     return product
   }
 }

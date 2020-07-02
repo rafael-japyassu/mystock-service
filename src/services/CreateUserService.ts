@@ -5,8 +5,12 @@ import User from '../models/User'
 import AppError from '../errors/AppError'
 
 class CreateUserService {
-  public async execute ({ name, email, password }: IUserRequest): Promise<User> {
+  public async execute ({ name, email, password, confirmPassword }: IUserRequest): Promise<User> {
     const userRepository = getRepository(User)
+
+    if (password !== confirmPassword) {
+      throw new AppError('Incorrect password confirmation')
+    }
 
     const checkUserExists = await userRepository.findOne({
       where: { email }
