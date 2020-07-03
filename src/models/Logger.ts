@@ -10,11 +10,14 @@ class Logger {
   user_id: string;
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: 'user_ir' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @Column()
   description: string;
+
+  @Column()
+  table: string;
 
   @CreateDateColumn()
   created_at: Date;
