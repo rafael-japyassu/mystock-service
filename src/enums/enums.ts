@@ -5,6 +5,5 @@ export enum LoggerDescription {
   SELECT_PAGINATION = 'Selectd items paginated',
   SELECT_ONE = 'Selectd one item',
   UPDATE = 'Update item',
-  DELETE = 'Delete item',
-  TESTE = 'teste'
+  DELETE = 'Delete item'
 }
