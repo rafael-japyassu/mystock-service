@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
 import { LoggerDescription } from '../enums/enums'
