@@ -78,14 +78,14 @@ export const getProductPagination = async (request: Request, response: Response)
   try {
     const { name, description, category_id, page, size } = request.query
 
-    const filterProduct = new PaginationProductService()
+    const paginationProduct = new PaginationProductService()
 
     const pageValue = page === undefined ? 0 : parseInt(page?.toString())
     const sizeValue = size === undefined ? 10 : parseInt(size?.toString())
 
     const offset = (pageValue - 1) * sizeValue
 
-    const products = await filterProduct.execute({
+    const products = await paginationProduct.execute({
       name: name?.toString(),
       category_id: category_id?.toString(),
       description: description?.toString(),
