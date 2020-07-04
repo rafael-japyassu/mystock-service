@@ -7,7 +7,7 @@
     "build": "tsc -p .",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "node ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@types/jest": "^26.0.3",
